@@ -64,33 +64,34 @@
             <div>
                 <div id="step-1">
                     <h2>Basic Info</h2>
-                    <div id="form-step-0" role="form" data-toggle="validator">
+                    <div  id="form-step-0" role="form" data-toggle="validator">
                         <div class="form-group">
-                   	  		<label for = "schoolname" class="control-label">Name of the school : </label>
-                            <input type = "text" class="form-control" required> <br />
-                            <label for = "address class="control-label"">Address : </label>
-                            <input type = "text" class="form-control" required> <br />
+                   	  		  <label for = "schoolname" class="control-label">Name of the school : </label>
+                              <input type = "text" id="schoolname" class="form-control" required> <br />
+                            <label for = "address" class="control-label">Address : </label>
+                              <input type = "text" id="address" class="form-control" required> <br />
                             <label for = "contact" class="control-label">Contact Number : </label>
-                            <input type = "text" class="form-control" required> <br />
+                              <input type = "text" id="contact" class="form-control" type="tel" pattern="[7-9]{1}[0-9]{9}" required> <br />
                             <label for = "site" class="control-label">School Website : </label>
-                            <input type = "text" class="form-control" required> <br />
+                             <input type = "text" id="site" class="form-control" type="url" required> <br />
                             <label for = "fname" class="control-label">Founder's name : </label>
-                            <input type = "text" class="form-control" required> <br />
+	                            <input type = "text" id="fname" class="form-control" required> <br />
                             <label for = "pname" class="control-label">Principal's Name : </label>
-                            <input type = "text" class="form-control" required> <br />
+      	                      <input type = "text" id="pname" class="form-control" required> <br />
                             <label for = "email" class="control-label">Email ID : </label>                            
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Write your email address" 
+        	                    <input type="email" id="email" class="form-control" name="email" id="email" placeholder="Write your email address" 
                              data-error="Sorry! That email address is invalid" required>
                           	<label for = "board" class="control-label">Board affiliation: </label>
-                            <input type = "text" class="form-control" required> <br />
+          	                  <input type = "text" id="board" class="form-control" required> <br />
                             <label for = "numteachers" class="control-label">Number of teachers : </label>
-                            <input type = "text" class="form-control" required> <br />          
-                			<label for = "numstudents" class="control-label">Total Number of students : </label>
-                            <input type = "text" class="form-control" required> <br />
+            	                <input type = "text" id="numteachers" class="form-control" required> <br />          
+			                			<label for = "numstudents" class="control-label">Total Number of students : </label>
+              	              <input type = "text" id="numstudents" class="form-control" required> <br />
                             <label for = "numgirls class="control-label"">Number of girls : </label>
-                            <input type = "text" class="form-control" required> <br />
-                 			<label for = "numboys class="control-label"">Number of boys : </label>
-                            <input type = "text" class="form-control" required> <br />           
+                	            <input type = "text" id="numgirls" class="form-control" required> <br />
+                 						<label for = "numboys class="control-label"">Number of boys : </label>
+                        	    <input type = "text" id="numboys" class="form-control" required> <br /> 
+                        	    <input type="submit" name="check">    
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
