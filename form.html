@@ -52,7 +52,7 @@
                 <div id="step-1">
                     <h2>Basic Info</h2>
                     <div  id="form-step-0" role="form" data-toggle="validator">
-                        <div class="form-group">
+                        <div class="form-group" id="form01">
 
 			
                    	  		<label for = "schoolname" class="control-label">Name of the school : </label>
@@ -62,13 +62,13 @@
                             <label for = "contact" class="control-label">Contact Number : </label>
                             <input type = "number" class="form-control" placeholder="91xxxxxxxxxx"required> <br />
                             <label for = "site" class="control-label">School Website : </label>
-                            <input type = "text" class="form-control" placeholder="http://sandprints.in/"required> <br />
+                            <input type = "url" class="form-control" placeholder="http://sandprints.in/"required> <br />
                             <label for = "fname" class="control-label">Founder's name : </label>
                             <input type = "text" class="form-control" placeholder="Mr. XYZ" required> <br />
                             <label for = "pname" class="control-label">Principal's Name : </label>
                             <input type = "text" class="form-control" placeholder="Mr. ABC" required> <br />
                             <label for = "email" class="control-label">Email ID : </label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Write your email address"
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Write your email address" data-validation="email"
                              data-error="Sorry! That email address is invalid" required>
                           	<label for = "board" class="control-label">Board affiliation: </label>
                             <input type = "text" class="form-control" placeholder="ICSE/CBSE/etc" required> <br />
@@ -349,17 +349,22 @@
     <!-- Include jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include jQuery Validator plugin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
+  
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 
     <!-- Include SmartWizard JavaScript source -->
     <script type="text/javascript" src="dist/js/jquery.smartWizard.min.js"></script>
+    
 
     <script type="text/javascript">
         $(document).ready(function(){
 
+          $.validate();
+
+
             // Toolbar extra buttons
-            var btnFinish = $('<button></button>').text('Finish')
+            var btnFinish = $('<button></button>').text('Next')
                                              .addClass('btn btn-info')
                                              .on('click', function(){
                                                     if( !$(this).hasClass('disabled')){
@@ -426,6 +431,8 @@
                     $('.btn-finish').addClass('enabled');
                 }
             });
+
+          
 
         });
     </script>

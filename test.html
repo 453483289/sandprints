@@ -2,21 +2,20 @@
 <html>
 <head>
 	<title>hey</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+
+
 </head>
 <body>
-	<form>
-	<label for = "contact" class="control-label">Contact Number : </label>
-                              <input type = "text" class="form-control" type="tel" pattern="[7-9]{1}[0-9]{9}" required> <br />
-                            <label for = "site" class="control-label">School Website : </label>
-                             <input type = "text" class="form-control" type="url" required> <br />
-                            <label for = "fname" class="control-label">Founder's name : </label>
-	                            <input type = "text" class="form-control" required> <br />
-   
-		<input type="url" name="url">
-		<input type="submit" name="">
+	<form id="newform">
+	     <input  name="email" data-validation="email" data-validation-error-msg="You did not enter a valid e-mail">
+
+
+     		<input type="submit" name="">
 	</form>
 	<hr>
-	<form>
+	<!-- <form>
 						<label for = "schoolname" class="control-label">Name of the school : </label>
                               <input type = "text" id="schoolname" class="form-control" required> <br />
                             <label for = "address" class="control-label">Address : </label>
@@ -44,5 +43,14 @@
                         	    <input type = "text" id="numboys" class="form-control" required> <br /> 
                         	    <input type="submit" name="check">  
                         	    </form> 
+ -->
+
+
+
 </body>
+
+<script type="text/javascript">
+  $.validate();
+
+</script>
 </html>
