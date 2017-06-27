@@ -9,7 +9,7 @@
 </head>
 <body>
 	<form id="newform">
-	     <input  name="email" data-validation="email" data-validation-error-msg="You did not enter a valid e-mail">
+	     <input  name="email" data-validation="email" data-validation-error-msg="You did not enter a valid e-mail" >
 
 
      		<input type="submit" name="">
@@ -54,3 +54,28 @@
 
 </script>
 </html>
+
+
+
+
+
+
+ var btnFinish = $('<button></button>').text('Next')
+                                             .addClass('btn btn-info')
+                                             .on('click', function(){
+                                                    if( !$(this).hasClass('disabled')){
+                                                        var elmForm = $("#myForm");
+                                                        if(elmForm){
+                                                            elmForm.validator('validate');
+                                                            var elmErr = elmForm.find('.has-error');
+                                                            if(elmErr && elmErr.length > 0){
+                                                                alert('Oops we still have error in the form');
+                                                                return false;
+                                                            }else{
+                                                                alert('Great! we are ready to submit form');
+                                                                elmForm.submit();
+                                                                return false;
+                                                            }
+                                                        }
+                                                    }
+                                                });
