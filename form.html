@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Welcome</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href = "images/logo.png" rel="icon" type="image/png">
         <!-- Include Bootstrap CSS -->
-        <img src = "images/logo.png" alt="SandPrints" style = "width:150px; height:150px">
+        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <!-- Optional Bootstrap theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
@@ -16,9 +17,26 @@
         <link rel="stylesheet" href="css/style.css">
         <!-- Optional SmartWizard theme -->
         <link href="dist/css/smart_wizard_theme_arrows.css" rel="stylesheet" type="text/css" />
+
+        <!-- Include jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- Include jQuery Validator plugin -->
+  
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+
+    <!-- Include SmartWizard JavaScript source -->
+        <script type="text/javascript" src="dist/js/jquery.smartWizard.min.js"></script>
+
+        <script type="text/javascript">
+  $(document).ready(function() {
+      // Initialize Smart Wizard
+        $('#wizard').smartWizard();
+  }); 
+</script>
     </head>
 <body>
-
+<img id="img" src = "images/logo.png" alt="SandPrints" style = "width:150px; height:150px">
  <div id='cssmenu'>
 <ul>
    <li><a href='index.html'>Home</a></li>
@@ -56,30 +74,30 @@
 
 			
                    	  		<label for = "schoolname" class="control-label">Name of the school : </label>
-                            <input type = "text" class="form-control" placeholder="XYZ Public School" required> <br />
-                            <label for = "address class="control-label"">Address : </label>
-                            <input type = "text" class="form-control" placeholder="X-96, ABC Colony, DE Street, ND"required> <br />
+                            <input id="schoolname" type = "text" class="form-control" placeholder="XYZ Public School" required> <br />
+                            <label for = "address" class="control-label">Address : </label>
+                            <input id="address" type = "text" class="form-control" placeholder="X-96, ABC Colony, DE Street, ND" required> <br />
                             <label for = "contact" class="control-label">Contact Number : </label>
-                            <input type = "number" class="form-control" placeholder="91xxxxxxxxxx"required> <br />
+                            <input  id="contact" type = "number" class="form-control" placeholder="91xxxxxxxxxx"  required> <br />
                             <label for = "site" class="control-label">School Website : </label>
-                            <input type = "url" class="form-control" placeholder="http://sandprints.in/"required> <br />
+                            <input id="site" type = "url" class="form-control" placeholder="http://sandprints.in/" required> <br />
                             <label for = "fname" class="control-label">Founder's name : </label>
-                            <input type = "text" class="form-control" placeholder="Mr. XYZ" required> <br />
+                            <input id="fname" type = "text" class="form-control" placeholder="Mr. XYZ" required> <br />
                             <label for = "pname" class="control-label">Principal's Name : </label>
-                            <input type = "text" class="form-control" placeholder="Mr. ABC" required> <br />
+                            <input id="pname" type = "text" class="form-control" placeholder="Mr. ABC" required> <br />
                             <label for = "email" class="control-label">Email ID : </label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Write your email address" data-validation="email"
+                            <input  id="email" type="email" class="form-control" name="email" placeholder="Write your email address" data-validation="email"
                              data-error="Sorry! That email address is invalid" required>
                           	<label for = "board" class="control-label">Board affiliation: </label>
-                            <input type = "text" class="form-control" placeholder="ICSE/CBSE/etc" required> <br />
+                            <input id="board" type = "text" class="form-control" placeholder="ICSE/CBSE/etc" required> <br />
                             <label for = "numteachers" class="control-label">Number of teachers : </label>
-                            <input type = "number" class="form-control"  min="0" max="100000" placeholder="56" required> <br />
+                            <input id="numteachers" type = "number" class="form-control"  min="0" max="100000" placeholder="56" required> <br />
                 			      <label for = "numstudents" class="control-label">Total Number of students : </label>
-                            <input type = "number" class="form-control"  min="0" max="100000" placeholder="2050" required> <br />
-                            <label for = "numgirls class="control-label"">Number of girls : </label>
-                            <input type = "number" class="form-control"  min="0" max="100000" placeholder="1280" required> <br />
-                 			      <label for = "numboys class="control-label"">Number of boys : </label>
-                            <input type = "number" class="form-control" min="0" max="100000" placeholder="1280" required> <br />
+                            <input id="numstudents" type = "number" class="form-control"  min="0" max="100000" placeholder="2050" required> <br />
+                            <label for = "numgirls" class="control-label">Number of girls : </label>
+                            <input id="numgirls" type = "number" class="form-control"  min="0" max="100000" placeholder="1280" required> <br />
+                 			      <label for = "numboys" class="control-label">Number of boys : </label>
+                            <input id="numboys" type = "number" class="form-control" min="0" max="100000" placeholder="1280" required> <br />
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
@@ -90,26 +108,26 @@
                     <div id="form-step-1" role="form" data-toggle="validator">
                        <div class="form-group">
         		           <label for = "q1" class="control-label">What professional aspects, skills and key areas are taken in view while selecting teachers?</label>
-        		           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+        		           <TEXTAREA id="q1" name="thetext" rows="3" class="form-control"> </TEXTAREA>
         				       <label for = "q2" class="control-label">Kindly elaborate on the selection process that school adopts to select the teachers.</label>
-        		           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+        		           <TEXTAREA id="q2" name="thetext" rows="3" class="form-control"> </TEXTAREA>
         		           <label for = "q3" class="control-label">Do your teachers apply child-centered approach while teaching? If yes, elaborate.</label>
-        		           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+        		           <TEXTAREA id="q3" name="thetext" rows="3" class="form-control"> </TEXTAREA>
         				       <label for = "q4" class="control-label"> Do you assess your teachers' performance on regular basis and provide constructive feedback? If yes, what remedial measures are taken for their improvement and for achieving the desired goal?</label>
-        		           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+        		           <TEXTAREA id="q4" name="thetext" rows="3" class="form-control"> </TEXTAREA>
         		           <label for = "q5" class="control-label">Anything else you would like to mention under 'Teachers proficiency' which has not been covered through the above questions</label>
-        		           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+        		           <TEXTAREA id="q5" name="thetext" rows="3" class="form-control"> </TEXTAREA>
                        <br /><i>Teacher's welfare and training programs –Timely training of teachers to learn and adapt to the changes to create a curriculum fit for the students. Skill up-gradation programs to keep them at par with the ever evolving teaching-learning process.</i> <br /> <br />
                        <label for = "q6" class="control-label">How are teachers inducted into the school system? Describe all the components of teacher’s orientation plan?</label>
-                       <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                       <TEXTAREA id="q6" name="thetext" rows="3" class="form-control"> </TEXTAREA>
                        <label for = "q7" class="control-label">How frequently do you conduct teacher welfare workshops for theirprofessional growth and development?</label>
-                       <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                       <TEXTAREA id="q7" name="thetext" rows="3" class="form-control"> </TEXTAREA>
                        <label for = "q8" class="control-label">What are some of the initiatives taken to motivate and retain teachers? What all welfare schemes do you offer to your teachers to increase their morale?</label>
-                       <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                       <TEXTAREA id="q8" name="thetext" rows="3" class="form-control"> </TEXTAREA>
                        <label for = "q9" class="control-label">How do you assist teachers in identifying their potential development areas and ways for improvement, so as to raise their professional standard and improve?</label>
-                       <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                       <TEXTAREA id="q9" name="thetext" rows="3" class="form-control"> </TEXTAREA>
                        <label for = "q10" class="control-label">Do you have a teacher’s exchange program? If yes, provide some of the benefits school derived from the exchange program?</label>
-                       <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                       <TEXTAREA id="q10" name="thetext" rows="3" class="form-control"> </TEXTAREA>
                        <div class="help-block with-errors"></div>
                           </div>
                     </div>
@@ -336,25 +354,20 @@
                            <label for = "q10" class="control-label">Is your school’s infrastructure supportive of their needs?  Kindly submit detailed information on infrastructure facilities available to support the children with special needs?</label>
                            <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
                            <label for = "q11" class="control-label">Anything else that you would like to mention under ‘Inclusive Education’ that has not been covered through the above questions?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                           <TEXTAREA id="q11" name="thetext" rows="3" class="form-control"> </TEXTAREA>
                            <div class="help-block with-errors"></div>
                     </div>
                 </div>
             </div>
+
+
+        </div>
         </div>
     </form>
 
     </div>
 
-    <!-- Include jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include jQuery Validator plugin -->
-  
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
-
-    <!-- Include SmartWizard JavaScript source -->
-    <script type="text/javascript" src="dist/js/jquery.smartWizard.min.js"></script>
+    
     
 
     <script type="text/javascript">

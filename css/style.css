@@ -4,13 +4,14 @@ img {
     display: block;
     margin: auto;
 	width:40%;
+
 }
 
 #cssmenu,
 #cssmenu ul,
 #cssmenu ul li,
 #cssmenu ul li a {
-  margin: 0;
+  margin: auto;
   padding: 0;
   border: 0;
   list-style: none;
@@ -21,6 +22,11 @@ img {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+#cssmenu ul{
+  /* border: solid; */
+  padding-right: 30%;
+}
+
 #cssmenu:after,
 #cssmenu > ul:after {
   content: ".";
