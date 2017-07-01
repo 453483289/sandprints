@@ -1,0 +1,58 @@
+extends ./baseform
+block title
+	title step-9
+block content
+	fieldset
+		legend Academics
+		p
+			i
+				b Academic Rigor
+				|  - How well the school is doing academically and its overall annual performance?
+			br
+			br
+		.row
+			.col-lg-12
+				.form-group
+					label(for='q1')
+						| Kindly share the highlights of the academic and co-scholastic annual report of the last academic session of your school?
+					textarea#q1.form-control(name='thetext1', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q2')
+						| Anything else you would like to mention under ‘Academic Rigor’ which has not been covered through the above questions?
+					textarea#q2.form-control(name='thetext2', rows='3', data-parsley-group='block0')  
+		p
+			i
+				b Value for Money
+				|  -  Is the school worth investing one’s future. Does the school provide conducive environment where holistic development takes place?
+			br
+			br
+		.row
+			.col-lg-12
+				.form-group
+					label(for='q3')
+						| Why do you think your school is worth investing? What achievements the school has made so far?
+					textarea#q3.form-control(name='thetext3', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q4')
+						| Anything else you would like to mention under ‘Value for money’ which has not been covered through the above questions?
+					textarea#q4.form-control(name='thetext4', rows='3', data-parsley-group='block0')  
+		p
+			i
+				b Leadership/management quality
+				|  - Capability and vision of school Principal/director/CEO in improving teaching learning process, seeing to it that the staff works as a team, integrity and other leadership skills.
+			br
+			br
+		.row
+			.col-lg-12
+				.form-group
+					label(for='q5')
+						| Please mention the initiatives management has taken to communicate the vision of school to each of its staff member, students, parents etc.
+					textarea#q5.form-control(name='thetext5', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q6')
+						| Does management have a plan for next 3-5 years to further promote development or expansion to new geographies?
+					textarea#q6.form-control(name='thetext6', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q7')
+						| Anything else you would like to mention under ‘Leadership/management quality’ which has not been covered through the above questions?
+					textarea#q7.form-control(name='thetext7', rows='3', data-parsley-group='block0')  

@@ -1,33 +1,117 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href = "images/logo.png" rel="icon" type="image/png">
-        <!-- Include Bootstrap CSS -->
-        <img src = "images/logo.png" alt="SandPrints" style = "width:150px; height:150px">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <!-- Optional Bootstrap theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SandPrints</title>
 
-        <!-- Include SmartWizard CSS -->
-        <link href="dist/css/smart_wizard.css" rel="stylesheet" type="text/css" />
-        
-        <link rel="stylesheet" href="css/style.css">
-        <!-- Optional SmartWizard theme -->
-        <link href="dist/css/smart_wizard_theme_dots.css" rel="stylesheet" type="text/css" />
-    </head>
+  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="step-form-wizard/css/step-form-wizard-all.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="plugins/parsley/parsley.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="plugins/jquery-2.1.4.min.js"></script>
+  <script src="step-form-wizard/js/step-form-wizard.js"></script>
+  <script src="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="plugins/parsley/parsley.min.js"></script>
+  <script src="js/script.js"></script>
+
+  <script>
+  var sfw;
+  $(document).ready(function () {
+    sfw = $("#wizard").stepFormWizard({
+      height: 'auto',
+      linkNav: 'prev',
+      markPrevSteps: true,
+      onNext: function(i) {
+        var valid = $("#wizard").parsley().validate('block' + i);
+        sfw.refresh();
+        return valid;
+      },
+
+      onFinish: function(i) {
+        var valid = $("#wizard").parsley().validate();
+        // if use height: 'auto' call refresh metod after validation, because parsley can change content
+        sfw.refresh();
+        return valid;
+      }
+    });
+  })
+  $('#wizard_').on('sf-step-after', function(e) {
+    $('#events').append($('<div>').text('sf-step-after'));
+    console.log(e);
+  });
+  $(window).load(function () {
+    $(".sf-step").mCustomScrollbar({
+      theme: "dark-3",
+      scrollButtons: {
+        enable: true
+      }
+    });
+  });
+  </script>
+</head>
 <body>
- <div id='cssmenu'>
-<ul>
-   <li><a href='index.html'>Home</a></li>
-   <li><a href='form.html'>Form</a></li>
-   <li><a href="awards.html"> Awards</a></li>
-   <li class='active'><a href='panel.html'>Panel members</a></li>
-   <li ><a href='about.html'>About us</a></li>
-   <li><a href='contact.html'>Contact</a></li>
-</ul>
+  <img id="img" src = "images/logo.png" alt="SandPrints" style = "width:150px; height:150px">
+  <br />
+  <div id='cssmenu'>
+    <ul>
+      <li><a href='index.html'>Home</a></li>
+      <li><a href='form.html'>Form</a></li>
+      <li><a href='awards.html'>Awards</a></li>
+      <li class='active'><a href='panel.html'>Panel members</a></li>
+      <li><a href='about.html'>About us</a></li>
+      <li><a href='contact.html'>Contact</a></li>
+    </ul>
+  </div>
+  <br />
+
+  <div class="row">
+    <div class="col-lg-6">
+      <img src = "images/georgepaul.png" alt="SandPrints" style = "width:150px; height:150px">
+    </div>
+    <div class="col-lg-6">
+      Fr. George Paul has extensive experience of 37 years in the education sector. He has been associated with numerous schools as the school principal. Father has travelled extensively and has expert knowledge on educational system followed in different countries. Father has been the President of All Indian National Association of Catholic Schools for two terms. He is also a Governing body member of International Association of Catholic Schools (OIEC), Brussles. Father also serves as a member of National Core Committee to study the New Education Policy of Govt. of India. He has many accolades to his name. He was awarded for the best services rendered in education across India by Shri Kapil Sibbal, Ministry of HRD, Govt of India in 2011.
+    </div>
+  </div>
+<br />
+
+  <div class="row">
+    <div class="col-lg-6">
+      <img src = "images/ritawilson.png" alt="SandPrints" style = "width:150px; height:150px">
+        </div>
+       <div class="col-lg-6">
+        Ms. Rita Wilson has a rich experience in education sector. She has done BA (Hons) from Miranda House, Delhi University and is an M Phil in English literature. She has been in education field for more than 40 years and was the Chief Executive and Secretary of the council for the ISCE, New Delhi. She has written several English books for the school children which have been published by prestigious publishing houses like Blackie & Sons and S. Chand & Co. Her expertise include curriculum design, public speaking, staff development, teacher training, editing and research.
+      </div>
+  </div>
+<br />
+
+    <div class="col-lg-6">
+      <img src = "images/suryanarainbahadur.png" alt="SandPrints" style = "width:150px; height:150px">
+    </div>
+    <div class="col-lg-6">
+    Mr. Surya is the Executive Director of Confluence Integrated Services. He is a well known trainer, motivational speaker and a human development professional. He conducts workshops and training programmes for Indian and Multinational corporations, hotels, schools, educational institutions, retailers, banks, Govt organizations, NGOs etc. Mr. Surya is a qualified T&D specialist from Indian Society for Training and Development (ISTD). He is a trained 16PF professional in Psychometric testing on personality profiling, coaching and facilitating and a life member of Delhi Management Association. Prior to it he has 25 years of Corporate Management experience with various multinational corporations. He is a graduate from Shri Ram College of Commerce, Delhi University and has a post graduate diploma in sales and marketing from Chandigarh . He is certified in Business English communication from Cambridge University.
+  </div>
 </div>
-        
+
+    <div class="row">
+      <div class="col-lg-6">
+        <img src = "images/varghese.png" alt="SandPrints" style = "width:150px; height:150px">
+        </div>
+      <div class="col-lg-6">
+        Fr. Varghese Mattamana is an MBA from Xavier's Institute. He has vast experience in managing several organizations including Caritas India where he served as Executive Director for 10 years. Fr. Varghese is also a senate member of Gandhi Gram Rural Development directly appointed by Vice President of India. Prior to Caritas, father was the Director of Social Services for Kerala Catholic Bishop's Conference. He has closely worked with many educational institutions and helped them reach new heights. He is also actively involved in establishing schools under Malankara Syrian Catholic Church across India. Currently, he is associated with Pune diocese, Maharashtra.
+      </div>
+    </div>
+<br />
+
+    <div class="row">
+      <div class="col-lg-6">
+       <img src = "images/soumya.png" alt="SandPrints" style = "width:150px; height:150px">
+        </div>
+        <div class="col-lg-6">
+        Ms. Soumya Gulati is the Deputy Director- Academic Development and Education for Bluebells Group of Schools, Gurugram.
+      </div>
+    </div>
 </body>
 </html>

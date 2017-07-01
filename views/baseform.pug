@@ -1,0 +1,95 @@
+doctype html
+head
+	meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+	meta(charset='UTF-8')
+	meta(name='viewport', content='width=device-width, initial-scale=1')
+	block title 
+	link(rel='stylesheet', href='plugins/bootstrap/css/bootstrap.min.css', type='text/css', media='screen, projection')
+	link(rel='stylesheet', href='step-form-wizard/css/step-form-wizard-all.css', type='text/css', media='screen, projection')
+	link(rel='stylesheet', href='plugins/mcustom-scrollbar/jquery.mCustomScrollbar.min.css')
+	link(rel='stylesheet', href='plugins/parsley/parsley.css', type='text/css', media='screen, projection')
+	link(rel='stylesheet', href='css/style.css')
+	script(src='plugins/jquery-2.1.4.min.js')
+	script(src='step-form-wizard/js/step-form-wizard.js')
+	script(src='plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js')
+	script(src='plugins/parsley/parsley.min.js')
+	script(src='js/script.js')
+	script.
+		var sfw;
+		$(document).ready(function () {
+		sfw = $("#wizard").stepFormWizard({
+		height: 'auto',
+		linkNav: 'prev',
+		markPrevSteps: true,
+		onNext: function(i) {
+		var valid = $("#wizard").parsley().validate('block' + i);
+		sfw.refresh();
+		return valid;
+		},
+		onFinish: function(i) {
+		var valid = $("#wizard").parsley().validate();
+		// if use height: 'auto' call refresh metod after validation, because parsley can change content
+		sfw.refresh();
+		return valid;
+		}
+		});
+		})
+		$('#wizard_').on('sf-step-after', function(e) {
+		$('#events').append($('<div>').text('sf-step-after'));
+		console.log(e);
+		});
+		$(window).load(function () {
+		$(".sf-step").mCustomScrollbar({
+		theme: "dark-3",
+		scrollButtons: {
+		enable: true
+		}
+		});
+		});
+	style.
+		#static-content {margin: 45px 10 60px;}
+		h1 {margin: 60px 0 60px 0;}
+		p {margin-bottom: 10px;}
+img#img(src='images/logo.png', alt='SandPrints', style='width:150px; height:150px')
+br
+#cssmenu
+	ul
+		li
+			a(href='/') Home
+		li.active
+			a(href='/step-1') Form
+		li
+			a(href='/awards') Awards
+		li
+			a(href='/panel') Panel members
+		li
+			a(href='/about') About us
+		li
+			a(href='/contact') Contact
+br
+.container
+	.site-index
+		.body-content
+			.row
+				.col-md-12
+					// <h1>Validation example with ParsleyJS</h1>
+					form#wizard(action='', method="POST")
+						block content
+						
+					br
+					.row
+						.col-md-12.up-20
+							#static-content
+								h2 Rules and Regulations:
+								ul
+									li
+										| Uploading fake documents or information can result in permanent ban of your school from our site
+									li  The maximum size for documents uploaded is x*y pixels(will update later).
+									li
+										| Your responses will be saved automatically in few intervals. So do not worry if you cannot fill the form at one time. You can always come back later!
+									li
+										| For any support you can contact us at neha@sandprints.in or shaifali@sandprints.in
+					footer.footer
+						.container
+							p.pull-left © SandPrints.in
+		

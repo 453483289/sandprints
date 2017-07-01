@@ -1,0 +1,51 @@
+extends ./baseform
+block title
+	title step-5
+block content
+	fieldset
+		legend Life Skills
+		p
+			i
+				b Life Skills Education
+				|  -The help a student to effectively cope with interpersonal problems, conflicts as well as deal with stress and frustration.
+			br
+			br
+		.row
+			.col-lg-12
+				.form-group
+					label(for='q1')
+						| Does your school impart Life-Skills education? If yes, then how well this education is integrated with curriculum?
+					textarea#q1.form-control(name='thetext1', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q2')
+						| How do you help students acquire positive attitude, outlook, qualities and skills for their personal and psychological development?
+					textarea#q2.form-control(name='thetext2', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q3')
+						| How do you enable students to develop critical and creative thinking skills in solving life and societal problems?
+					textarea#q3.form-control(name='thetext3', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q4')
+						| Anything else that you would like to mention under ‘Life-skills education’ that has not been covered through the above questions?
+					textarea#q4.form-control(name='thetext4', rows='3', data-parsley-group='block0')  
+		br
+		i
+			b Global Outlook
+			|  - Steps taken to encourage students to think globally, appreciate differing points of view and understand that the world is a complex, changing place.
+		br
+		br
+		.row
+			.col-lg-12
+				.form-group
+					label(for='q5')
+						| Do you organize cultural exchange programs to help students embrace other cultures and promote liberal-mindedness? If yes, furnish details?
+					textarea.form-control(name='thetext5', rows='3')  
+				.form-group
+					label(for='q6')
+						| Do you encourage students to participate in MUN( Model United Nations) competition to help them learn diplomacy, international relations and the United Nations?
+					textarea.form-control(name='thetext6', rows='3')  
+				.form-group
+				.form-group
+					label(for='q7')
+						| Anything else you would like to mention under ‘Global Outlook’ which has not been covered through the above questions
+					textarea.form-control(name='thetext7', rows='3')  

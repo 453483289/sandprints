@@ -1,38 +1,70 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href = "images/logo.png" rel="icon" type="image/png">
-        <!-- Include Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <!-- Optional Bootstrap theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>SandPrints</title>
 
-        <!-- Include SmartWizard CSS -->
-        <link href="dist/css/smart_wizard.css" rel="stylesheet" type="text/css" />
-        
-        <link rel="stylesheet" href="css/style.css">
-        <!-- Optional SmartWizard theme -->
-        <link href="dist/css/smart_wizard_theme_dots.css" rel="stylesheet" type="text/css" />
-    </head>
+	<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="step-form-wizard/css/step-form-wizard-all.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="plugins/parsley/parsley.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="plugins/jquery-2.1.4.min.js"></script>
+	<script src="step-form-wizard/js/step-form-wizard.js"></script>
+	<script src="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="plugins/parsley/parsley.min.js"></script>
+	<script src="js/script.js"></script>
+
+	<script>
+	var sfw;
+	$(document).ready(function () {
+		sfw = $("#wizard").stepFormWizard({
+			height: 'auto',
+			linkNav: 'prev',
+			markPrevSteps: true,
+			onNext: function(i) {
+				var valid = $("#wizard").parsley().validate('block' + i);
+				sfw.refresh();
+				return valid;
+			},
+
+			onFinish: function(i) {
+				var valid = $("#wizard").parsley().validate();
+				// if use height: 'auto' call refresh metod after validation, because parsley can change content
+				sfw.refresh();
+				return valid;
+			}
+		});
+	})
+	$('#wizard_').on('sf-step-after', function(e) {
+		$('#events').append($('<div>').text('sf-step-after'));
+		console.log(e);
+	});
+	$(window).load(function () {
+		$(".sf-step").mCustomScrollbar({
+			theme: "dark-3",
+			scrollButtons: {
+				enable: true
+			}
+		});
+	});
+	</script>
+</head>
 <body>
- 
-  <img src = "images/logo.png" alt="SandPrints" style = "width:150px; height:150px">
-
- <div id='cssmenu'>
-<ul>
-   <li class='active'><a href='#'>Home</a></li>
-   <li ><a href='form.html'>Form</a></li>
-   <li><a href='#'>Awards</a></li>
-   <li><a href='#'>Panel members</a></li>
-   <li><a href='about.html'>About us</a></li>
-   <li><a href='#'>Contact</a></li>
-   <li><a href='#'>Contact</a></li>
-   
-</ul>
-</div>
-
-
+	<img id="img" src = "images/logo.png" alt="SandPrints" style = "width:150px; height:150px">
+	<br />
+	<div id='cssmenu'>
+		<ul>
+			<li class='active'><a href='index.html'>Home</a></li>
+			<li><a href='form.html'>Form</a></li>
+			<li><a href='awards.html'>Awards</a></li>
+			<li><a href='panel.html'>Panel members</a></li>
+			<li><a href='about.html'>About us</a></li>
+			<li><a href='contact.html'>Contact</a></li>
+		</ul>
+	</div>
+	<br />
 </body>
 </html>

@@ -1,0 +1,26 @@
+extends ./baseform
+block title
+	title step-6
+block content
+	fieldset
+		legend PHILANTHROPIC SERVICES
+		p
+			i
+				b Community Service
+				|  Initiatives taken to help the weaker/ disadvantage section of the society in the neighborhood.
+			br
+			br
+		.row
+			.col-lg-12
+				.form-group
+					label(for='q1')
+						| What initiatives School Management has taken for the betterment of the society and for the disadvantaged group? Kindly provide the evidences.
+					textarea#q1.form-control(name='thetext1', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q2')
+						| How the school supports the weaker section of the society- like in kind /cash donation, volunteerism of teachers and students etc?
+					textarea#q2.form-control(name='thetext2', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q3')
+						| Anything else you would like to mention under ‘Community Service’ which has not been covered through the above questions?
+					textarea#q3.form-control(name='thetext3', rows='3', data-parsley-group='block0')  

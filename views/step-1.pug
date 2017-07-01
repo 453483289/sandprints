@@ -1,0 +1,46 @@
+extends ./baseform
+block title
+	title step-1
+block content
+	fieldset
+		legend Basic information
+		.row
+			.col-lg-6
+				.form-group
+					label(for='schoolname') Name of the school
+					input#schoolname.form-control(type='text', name='schoolname', placeholder='Enter school name', required='', data-parsley-group='block0')
+				.form-group
+					label(for='address') Address
+					input#address.form-control(type='text', name='address', placeholder="Enter your school's address", required='', data-parsley-group='block0')
+				.form-group
+					label(for='contact') Contact Number
+					input#contact.form-control(type='text', name='contact', data-parsley-minlength='8', required='', data-parsley-minlength-message='Please enter a valid phone number.', data-parsley-type='digits', data-parsley-pattern='^[\d\+\-\.\(\)\/\s]*$', placeholder="Enter school's contact number", data-parsley-group='block0')
+				.form-group
+					label(for='site') School Website
+					input#site.form-control(type='text', name='site', data-parsley-type='url', placeholder="Enter school's website", data-parsley-group='block0')
+				.form-group
+					label(for='fname') Founder's name
+					input#fname.form-control(type='text', name='fname', placeholder="Enter Founder's name", required='', data-parsley-group='block0')
+				.form-group
+					label(for='pname') Principal's name
+					input#pname.form-control(type='text', name='pname', placeholder="Enter Principal's name", required='', data-parsley-group='block0')
+			.col-lg-6
+				.form-group
+					.form-group
+						label(for='email') Email ID
+						input#email.form-control(type='email', name='email', placeholder="Enter school's email ID", required='', data-parsley-group='block0')
+					.form-group
+						label(for='board') Board affiliation
+						input#board.form-control(type='text', name='board', placeholder='ICSE/CBSE etc', required='', data-parsley-group='block0')
+					.form-group
+						label(for='numteachers') Number of teachers
+						input#numteachers.form-control(type='number', name='numteachers', placeholder='Enter number of teachers', data-parsley-group='block0')
+					.form-group
+						label(for='numstudents') Number of students
+						input#numstudents.form-control(type='number', name='numstudents', placeholder='Enter number of students', data-parsley-group='block0')
+					.form-group
+						label(for='numboys') Number of boys
+						input#numboys.form-control(type='number', name='numboys', placeholder='Enter number of boys', data-parsley-group='block0')
+					.form-group
+						label(for='numgirls') Number of girls
+						input#numgirls.form-control(type='number', name='numgirls', placeholder='Enter number of girls', data-parsley-group='block0')

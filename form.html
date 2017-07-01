@@ -1,376 +1,663 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Welcome</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href = "images/logo.png" rel="icon" type="image/png">
-        <!-- Include Bootstrap CSS -->
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <!-- Optional Bootstrap theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SandPrints</title>
 
-        <!-- Include SmartWizard CSS -->
-        <link href="dist/css/smart_wizard.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="step-form-wizard/css/step-form-wizard-all.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="plugins/parsley/parsley.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="plugins/jquery-2.1.4.min.js"></script>
+  <script src="step-form-wizard/js/step-form-wizard.js"></script>
+  <script src="plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="plugins/parsley/parsley.min.js"></script>
+  <script src="js/script.js"></script>
 
-        <link rel="stylesheet" href="css/style.css">
-        <!-- Optional SmartWizard theme -->
-        <link href="dist/css/smart_wizard_theme_arrows.css" rel="stylesheet" type="text/css" />
+  <script>
+  var sfw;
+  $(document).ready(function () {
+    sfw = $("#wizard").stepFormWizard({
+      height: 'auto',
+      linkNav: 'prev',
+      markPrevSteps: true,
+      onNext: function(i) {
+        var valid = $("#wizard").parsley().validate('block' + i);
+        sfw.refresh();
+        return valid;
+      },
 
-        <!-- Include jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <!-- Include jQuery Validator plugin -->
-  
+      onFinish: function(i) {
+        var valid = $("#wizard").parsley().validate();
+        // if use height: 'auto' call refresh metod after validation, because parsley can change content
+        sfw.refresh();
+        return valid;
+      }
+    });
+  })
+  $('#wizard_').on('sf-step-after', function(e) {
+    $('#events').append($('<div>').text('sf-step-after'));
+    console.log(e);
+  });
+  $(window).load(function () {
+    $(".sf-step").mCustomScrollbar({
+      theme: "dark-3",
+      scrollButtons: {
+        enable: true
+      }
+    });
+  });
+  </script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
-
-    <!-- Include SmartWizard JavaScript source -->
-        <script type="text/javascript" src="dist/js/jquery.smartWizard.min.js"></script>
-
-        <script type="text/javascript">
-  $(document).ready(function() {
-      // Initialize Smart Wizard
-        $('#wizard').smartWizard();
-  }); 
-</script>
-    </head>
+  <style>
+  #static-content {margin: 45px 10 60px;}
+  h1 {margin: 60px 0 60px 0;}
+  p {margin-bottom: 10px;}
+  </style>
+</head>
 <body>
-<img id="img" src = "images/logo.png" alt="SandPrints" style = "width:150px; height:150px">
- <div id='cssmenu'>
-<ul>
-   <li><a href='index.html'>Home</a></li>
-   <li class='active'><a href='form.html'>Form</a></li>
-   <li><a href='awards.html'>Awards</a></li>
-   <li><a href='panel.html'>Panel members</a></li>
-   <li><a href='about.html'>About us</a></li>
-   <li><a href='contact.html'>Contact</a></li>
-</ul>
-</div>
+  <img id="img" src = "images/logo.png" alt="SandPrints" style = "width:150px; height:150px">
+  <br />
+  <div id='cssmenu'>
+    <ul>
+      <li><a href='index.html'>Home</a></li>
+      <li class='active'><a href='form.html'>Form</a></li>
+      <li><a href='awards.html'>Awards</a></li>
+      <li><a href='panel.html'>Panel members</a></li>
+      <li><a href='about.html'>About us</a></li>
+      <li><a href='contact.html'>Contact</a></li>
+    </ul>
+  </div>
+  <br />
 
-    <div class="container">
-        <br />
-        <form action="#" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
-        <div id="smartwizard">
+  <div class="container">
+    <div class="site-index">
+      <div class="body-content">
 
-            <ul>
-                <li><a href="#step-1">Basic Info<br /><small>Step 1</small></a></li>
-                <li><a href="#step-2">Staff dev.<br /><small>Step 2</small></a></li>
-                <li><a href="#step-3">Activities<br /><small>Step 3</small></a></li>
-                <li><a href="#step-4">Student dev.<br /><small>Step 4</small></a></li>
-                <li><a href="#step-5">Life Skills<br /><small>Step 5</small></a></li>
-                <li><a href="#step-6">Phil. Services<br /><small>Step 6</small></a></li>
-                <li><a href="#step-7">Teaching<br /><small>Step 7</small></a></li>
-                <li><a href="#step-8">Infrastructure<br /><small>Step 8</small></a></li>
-                <li><a href="#step-9">Academics<br /><small>Step 9</small></a></li>
-                <li><a href="#step-10">Social<br /><small>Step 10</small></a></li>
-            </ul>
-
-            <div>
-                <div id="step-1">
-                    <h2>Basic Info</h2>
-                    <div  id="form-step-0" role="form" data-toggle="validator">
-                        <div class="form-group" id="form01">
-
-                          <form>			
-                   	  		<label for = "schoolname" class="control-label">Name of the school : </label>
-                            <input id="schoolname" type = "text" class="form-control" placeholder="XYZ Public School" required> <br />
-                            <label for = "address" class="control-label">Address : </label>
-                            <input id="address" type = "text" class="form-control" placeholder="X-96, ABC Colony, DE Street, ND" required> <br />
-                            <label for = "contact" class="control-label">Contact Number : </label>
-                            <input  id="contact" type = "number" class="form-control" placeholder="91xxxxxxxxxx"  required> <br />
-                            <label for = "site" class="control-label">School Website : </label>
-                            <input id="site" type = "url" class="form-control" placeholder="http://sandprints.in/" required> <br />
-                            <label for = "fname" class="control-label">Founder's name : </label>
-                            <input id="fname" type = "text" class="form-control" placeholder="Mr. XYZ" required> <br />
-                            <label for = "pname" class="control-label">Principal's Name : </label>
-                            <input id="pname" type = "text" class="form-control" placeholder="Mr. ABC" required> <br />
-                            <label for = "email" class="control-label">Email ID : </label>
-                            <input  id="email" type="email" class="form-control" name="email" placeholder="Write your email address" data-validation="email"
-                             data-error="Sorry! That email address is invalid" required>
-                          	<label for = "board" class="control-label">Board affiliation: </label>
-                            <input id="board" type = "text" class="form-control" placeholder="ICSE/CBSE/etc" required> <br />
-                            <label for = "numteachers" class="control-label">Number of teachers : </label>
-                            <input id="numteachers" type = "number" class="form-control"  min="0" max="100000" placeholder="56" required> <br />
-                			      <label for = "numstudents" class="control-label">Total Number of students : </label>
-                            <input id="numstudents" type = "number" class="form-control"  min="0" max="100000" placeholder="2050" required> <br />
-                            <label for = "numgirls" class="control-label">Number of girls : </label>
-                            <input id="numgirls" type = "number" class="form-control"  min="0" max="100000" placeholder="1280" required> <br />
-                 			      <label for = "numboys" class="control-label">Number of boys : </label>
-                            <input id="numboys" type = "number" class="form-control" min="0" max="100000" placeholder="1280" required> <br />
-                            <div class="help-block with-errors"></div>
-                            </form>
-                        </div>
-                    </div>
-              </div>
-
-                <div id="step-2">
-                    <i>The knowledge, skills and commitment of teachers are the most important factors in achieving high quality educational outcomes. Therefore, it's essential to ensure that those recruited to teaching Posts are of the highest caliber and well suited to the tasks they have to fulfill. </i> <br />  <br />
-                    <div id="form-step-1" role="form" data-toggle="validator">
-                       <div class="form-group">
-        		           <label for = "q1" class="control-label">What professional aspects, skills and key areas are taken in view while selecting teachers?</label>
-        		           <TEXTAREA id="q1" name="thetext" rows="3" class="form-control"> </TEXTAREA>
-        				       <label for = "q2" class="control-label">Kindly elaborate on the selection process that school adopts to select the teachers.</label>
-        		           <TEXTAREA id="q2" name="thetext" rows="3" class="form-control"> </TEXTAREA>
-        		           <label for = "q3" class="control-label">Do your teachers apply child-centered approach while teaching? If yes, elaborate.</label>
-        		           <TEXTAREA id="q3" name="thetext" rows="3" class="form-control"> </TEXTAREA>
-        				       <label for = "q4" class="control-label"> Do you assess your teachers' performance on regular basis and provide constructive feedback? If yes, what remedial measures are taken for their improvement and for achieving the desired goal?</label>
-        		           <TEXTAREA id="q4" name="thetext" rows="3" class="form-control"> </TEXTAREA>
-        		           <label for = "q5" class="control-label">Anything else you would like to mention under 'Teachers proficiency' which has not been covered through the above questions</label>
-        		           <TEXTAREA id="q5" name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                       <br /><i>Teacher's welfare and training programs –Timely training of teachers to learn and adapt to the changes to create a curriculum fit for the students. Skill up-gradation programs to keep them at par with the ever evolving teaching-learning process.</i> <br /> <br />
-                       <label for = "q6" class="control-label">How are teachers inducted into the school system? Describe all the components of teacher’s orientation plan?</label>
-                       <TEXTAREA id="q6" name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                       <label for = "q7" class="control-label">How frequently do you conduct teacher welfare workshops for theirprofessional growth and development?</label>
-                       <TEXTAREA id="q7" name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                       <label for = "q8" class="control-label">What are some of the initiatives taken to motivate and retain teachers? What all welfare schemes do you offer to your teachers to increase their morale?</label>
-                       <TEXTAREA id="q8" name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                       <label for = "q9" class="control-label">How do you assist teachers in identifying their potential development areas and ways for improvement, so as to raise their professional standard and improve?</label>
-                       <TEXTAREA id="q9" name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                       <label for = "q10" class="control-label">Do you have a teacher’s exchange program? If yes, provide some of the benefits school derived from the exchange program?</label>
-                       <TEXTAREA id="q10" name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                       <div class="help-block with-errors"></div>
-                          </div>
-                    </div>
-                </div>
-            	<!--<div id = "partB" class="pB">
-            		<b><i>Teacher's welfare and training programs : </b>Timely training of teachers to learn and adapt to the changes to create a curriculum fit for the students. Skill up-gradation programs to keep them at par with the ever evolving teaching-learning process.</b></i>
-            		</div> !-->
-                 <div id="step-3">
-                    <h2>Co-Cirricular Activities</h2>
-                    <i><b>Co-curricular activities</b> - They are an integral part of education. The core aim of education is to foster all round development of a child. In order to achieve this aim, there should be a striking balance between syllabus, curriculum, books and also co-curricular activities.</i><br /><br />
-                    <div id="form-step-2" role="form" data-toggle="validator">
-                        <div class="form-group">
-                           <label for = "q1" class="control-label">What all co-curricular activities do you have in the school? How well these activities are integrated in the school curriculum?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q2" class="control-label">How do you ensure active participation of students in competitions held at other schools? </label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q3" class="control-label">How do you ensure active participation of students in competitions held within the school?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q4" class="control-label"> Kindly highlight the inter-school/state achievements under different co-curricular activities in last 1-2 years?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q5" class="control-label">Anything else you would like to mention under ‘Co-curricular activities’ which has not been covered through the above questions?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <br /><i>Academic learning and sports education complement each other and helps developing individuals with leadership quality, sharing, team spirit and tolerance.</i><br /> <br />
-                           <label for = "q6" class="control-label">What all Sports activities do you offer to the students? How do you encourage students to enroll themselves for Sports Education (besides weekly time table which contains sports period)?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q7" class="control-label">How do you ensure active participation of students in sports events held at various levels- Intra, Inter-school as well as National level?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q8" class="control-label"> How many students have participated in sports and games outside the school under different categories in last 1-2 years? Highlight the achievements in District level/state level/National level:</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q9" class="control-label">How many sports teachers do you have in the school?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q10" class="control-label">Anything else you would like to mention under ‘Sports education’ which has not been covered through the above questions</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <div class="help-block with-errors"></div>
-                        </div>
-                    </div>
-                </div>
-                <div id="step-4" >
-                 <h2>STUDENT DEVELOPMENT AND VALUE EDUCATION</h2>
-                    <i><b>Individual attention to students</b> - Number of students in a section, teacher student ratio, if care is taken for every child’s growth instead of focusing on select few. Counseling facilities, both for personal problems and career related issues available for students.</i><br /><br />
-                    <div id="form-step-3" role="form" data-toggle="validator">
-                        <div class="form-group">
-                           <label for = "q1" class="control-label">What is the ideal teacher student ratio in your school? Is it constant for all the grades or changes as the grade increases?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q2" class="control-label">How do teachers motivate average students to perform better? What remedial strategies are taken to fill in their learning gaps?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q3" class="control-label">Are there any counseling facilities to deal with students anxieties, personal and career related problems? Kindly furnish the details.</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q4" class="control-label">Is there a criteria to ensure that the ratio between girls and boys in each class is equal or close to equal (+-5%)? Kindly ignore if school is gender specific.</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q5" class="control-label">What is the basis or methodology followed to divide students in each section?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q6" class="control-label">Anything else you would like to mention under ‘individual attention to students’ that has not been covered through the above questions?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <br /><i><b>Value System</b> - It aims at inculcating values to equip the learner to lead a life satisfying to the individual in accordance with the cherished values and ideals of the society.</i><br /> <br />
-                           <label for = "q6" class="control-label">What steps are being taken to promote values, respect for one another and peace?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q7" class="control-label">What steps do you take to sensitize students to respect other religion, culture, and people irrespective of the skin color or the language they speak?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q8" class="control-label"> How do you sensitize students to protect their environment or nurture the values of care and concern for the physical and natural environment?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q9" class="control-label">How do you help students learn to appreciate, demonstrate sensitivity and skills in fulfilling their responsibility as citizens towards shaping of a better society?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q10" class="control-label">Anything else you would like to mention under ‘Value System’ that has not been covered through the above questions</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <div class="help-block with-errors"></div>
-                    </div>
-                </div>
-            </div>
-                <div id="step-5" class="">
-                 <h2>STUDENT DEVELOPMENT AND VALUE EDUCATION</h2>
-                    <i><b>Life-skills education</b>-Life-Skills Education helps a student to effectively cope with interpersonal problems, conflicts as well as deal with stress and frustration.</i><br /><br />
-                    <div id="form-step-4" role="form" data-toggle="validator">
-                        <div class="form-group">
-                           <label for = "q1" class="control-label">Does your school impart Life-Skills education? If yes, then how well this education is integrated with curriculum?></label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q2" class="control-label">How do you help students acquire positive attitude, outlook, qualities and skills for their personal and psychological development?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q3" class="control-label">How do you enable students to develop critical and creative thinking skills in solving life and societal problems?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q4" class="control-label">Anything else that you would like to mention under ‘Life-skills education’ that has not been covered through the above questions</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <br /><i><b>Global Outlook</b> - Steps taken to encourage students to think globally, appreciate differing points of view and understand that the world is a complex, changing place.</i><br /> <br />
-                           <label for = "q6" class="control-label">Do you organize cultural exchange programs to help students embrace other cultures and promote liberal-mindedness? If yes, furnish details?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q7" class="control-label">Do you encourage students to participate in MUN( Model United Nations) competition to help them learn diplomacy, international relations and the United Nations?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q8" class="control-label"> Anything else you would like to mention under ‘Global Outlook’ which has not been covered through the above questions?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <div class="help-block with-errors"></div>
-                    </div>
-                </div>
-            </div>
-
-                <div id="step-6" class="">
-                 <h2>PHILANTHROPIC SERVICES</h2>
-                    <i><b>Community Service</b>-Initiatives taken to help the weaker/ disadvantage section of the society in the neighborhood.</i><br /><br />
-                    <div id="form-step-5" role="form" data-toggle="validator">
-                        <div class="form-group">
-                           <label for = "q1" class="control-label">What initiatives School Management has taken for the betterment of the society and for the disadvantaged group? Kindly provide the evidences.</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q2" class="control-label">How the school supports the weaker section of the society- like in kind /cash donation, volunteerism of teachers and students etc?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q3" class="control-label">Anything else you would like to mention under ‘Community Service’ which has not been covered through the above questions?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <div class="help-block with-errors"></div>
-                    </div>
-                </div>
-            </div>
-
-        <div id="step-7" class="">
-                 <h2>MODE OF TEACHING AND PARENTAL INVOLVEMENT</h2>
-                    <i><b>Parental Involvement</b> - Effective partnership between school and parents help students achieve better results.</i><br /><br />
-                    <div id="form-step-6" role="form" data-toggle="validator">
-                        <div class="form-group">
-                           <label for = "q1" class="control-label">How does your school ensure/encourage active parental involvement in school activities? How do you think it is beneficial for child’s holistic development?> </label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q2" class="control-label">By far, how have you used parents’ expertise in school events, functions and day to day activities?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q3" class="control-label">What are some of the ways in which feedback related to the teachers, facilities in the school, overall safety etc. is sought from parents? How often is this feedback taken?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q4" class="control-label">Cite an example where feedback from a parent was implemented and helped school improve in some way?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q5" class="control-label">Kindly mention the initiatives management has taken for parents to reach out to principal/vice principal or teacher in charge for any serious issues?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q6" class="control-label">Is there an allotted time during the day when parents can meet principal without appointment?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q7" class="control-label">Anything else you would like to mention under ‘Parental Involvement’ which has not been covered through the above questions?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <br /><i><b>Individualized Instruction and Approaches to Students</b> - Different students have different needs, therefore, to effectively teach all students, different strategies should be used. The teaching and interactions with students must reflect the needs of each, with the understanding of each as individuals.There are three types of learners in class- Auditory, visual and Kinesthetic. Therefore, lesson planning should be done keeping in mind the needs of each type of learner.</i><br /> <br />
-                           <label for = "q8" class="control-label">How do you facilitate learning for each type of learner?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q9" class="control-label">How do you enable auditory, visual and kinesthetic learners grasp key concepts? How do you use variety of instructional techniques to teach in everyday classroom activities?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q10" class="control-label">Anything else you would like to mention under ‘Individualized instruction and approaches to students’ which has not been covered through the above questions?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <div class="help-block with-errors"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="step-8" class="">
-                 <h2>INFRASTRUCTURE AND OVERALL UPKEEP</h2>
-                    <i><b>School Infrastructure</b> - How well kept the school building is, labs, play grounds, IT enabled class rooms, computers, books in library.</i><br /><br />
-                    <div id="form-step-7" role="form" data-toggle="validator">
-                        <div class="form-group">
-                           <label for = "q1" class="control-label">How do you enable students to acquire positive attitude and desirable habits for keeping themselves fit and healthy?> </label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q2" class="control-label">Does your school promote e-learning environment? If yes, how well it is integrated in day-to-day activities?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q3" class="control-label">Kindly mention about the safety norms that are in place or precautions to be followed during science lab sessions?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q4" class="control-label">Is there a practice in place that promotes the usage of library among children of all age group? If yes, kindly mention the details.</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q5" class="control-label">Anything else you would like to mention under ‘School Infrastructure’ which has not been covered through the above questions.</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <br /><i><b>Health and Hygiene</b> - conducting talks and seminars to make the students and staff aware of various health issues that can arise from unhygienic conditions.</i><br /> <br />
-                           <label for = "q6" class="control-label">How do you facilitate learning for each type of learner?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q7" class="control-label">What measures do you take to ensure physical and psychological safety of students?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q8" class="control-label">What preventive measures are in place to prevent students from sanitation related problems?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q9" class="control-label">How do you make students aware of basic hygiene factors?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q10" class="control-label">Anything else you would like to mention under ‘Health and Hygiene’ which has not been covered through the above questions.</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <div class="help-block with-errors"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="step-9" class="">
-                 <h2>ACADEMIC STANDARD AND LEADERSHIP</h2>
-                    <i><b>Academic Rigor</b> - How well the school is doing academically and its overall annual performance.</i><br /><br />
-                    <div id="form-step-8" role="form" data-toggle="validator">
-                        <div class="form-group">
-                           <label for = "q1" class="control-label">Kindly share the highlights of the academic and co-scholastic annual report of the last academic session of your school?> </label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q2" class="control-label">Anything else you would like to mention under ‘Academic Rigor’ which has not been covered through the above questions?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <br /><i><b>Value for Money</b> - Is the school worth investing one’s future.  Does the school provide conducive environment where holistic development takes place?</i><br /> <br />
-                           <label for = "q3" class="control-label">Why do you think your school is worth investing? What achievements the school has made so far?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q4" class="control-label">Anything else you would like to mention under ‘Value for money’ which has not been covered through the above questions.</label>
-                           <div class="help-block with-errors"></div>
-                           <i><b>Leadership/management quality</b> - Capability and vision of school Principal/director/CEO in improving teaching learning process, seeing to it that the staff works as a team, integrity and other leadership skills.</i><br /> <br />
-                           <label for = "q5" class="control-label">Please mention the initiatives management has taken to communicate the vision of school to each of its staff member, students, parents etc. </label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q6" class="control-label">Does management have a plan for next 3-5 years to further promote development or expansion to new geographies?</label>
-                           <label for = "q7" class="control-label">Anything else you would like to mention under ‘Leadership/management quality’ which has not been covered through the above questions.</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <div class="help-block with-errors"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="step-10" class="">
-                 <h2>SOCIAL INCLUSION AND INCLUSIVE EDUCATION</h2>
-                    <i><b>Social Inclusion</b>  – Ensuring that students from economically weaker section feel as confident and secure and enjoy same facilities as students of general category.</i><br /><br />
-                <div id="form-step-9" role="form" data-toggle="validator">
+        <div class="row">
+          <div class="col-md-12">
+            <!--  <h1>Validation example with ParsleyJS</h1> -->
+            <form id="wizard" action="">
+              <fieldset>
+                <legend>Basic information</legend>
+                <div class="row">
+                  <div class="col-lg-6">
                     <div class="form-group">
-                           <label for = "q1" class="control-label">What measures are taken by school authority to ensure that EWS students are being treated equally and no discrimination is done on the basis of their economic status? Kindly specify.> </label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q2" class="control-label">Do they get/enjoy same facilities as general category students? What steps are being taken to sensitize teachers as well as students towards this issue?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q4" class="control-label">How do you ensure that no discrimination based on social, economic, linguistic and religious identities as well as disability and illness/disease persist in your school?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q4" class="control-label">Anything else you would like to mention under ‘Healthy environment for all’ which has not been covered through the above questions?</label>
-                           <i><b>Inclusive Education</b> - The facilities in the school to help in the learning process of children with special needs, number of such children actually enrolled, how well are they integrated with other students.</i><br /> <br />
-                           <label for = "q5" class="control-label">Does your school promote inclusive culture?</label>
-                           <br/>
-                           <input type="radio" name="option" value="Yes" checked>Yes <br />
-                           <input type="radio" name="option" value="No">No <br /> <br />
-                           If <b>Yes,</b> <br />
-                           <label for = "q6" class="control-label">How many students are enrolled currently who have special needs?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q7" class="control-label">Do you follow an inclusive approach of teaching to facilitate learning in students with special needs?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q8" class="control-label">Do you have well-trained special educators to look after them? Kindly provide the evidences.</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q9" class="control-label">Is your school well- equipped to provide children with special needs, a nurturing and safe environment?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q10" class="control-label">Is your school’s infrastructure supportive of their needs?  Kindly submit detailed information on infrastructure facilities available to support the children with special needs?</label>
-                           <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <label for = "q11" class="control-label">Anything else that you would like to mention under ‘Inclusive Education’ that has not been covered through the above questions?</label>
-                           <TEXTAREA id="q11" name="thetext" rows="3" class="form-control"> </TEXTAREA>
-                           <div class="help-block with-errors"></div>
+                      <label for="schoolname">Name of the school</label>
+                      <input type="text" class="form-control" id="schoolname" name="schoolname" placeholder="Enter school name" required data-parsley-group="block0">
                     </div>
+                    <div class="form-group">
+                      <label for="address">Address</label>
+                      <input type="text" class="form-control" id="address" name="address" placeholder="Enter your school's address" required  data-parsley-group="block0">
+                    </div>
+                    <div class="form-group">
+                      <label for="contact">Contact Number</label>
+                      <input type="text" class="form-control" id="contact" name="contact" data-parsley-minlength="8" required data-parsley-minlength-message="Please enter a valid phone number."  data-parsley-type="digits" data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$"  placeholder="Enter school's contact number"  data-parsley-group="block0">
+                    </div>
+                    <div class="form-group">
+                      <label for="site">School Website</label>
+                      <input type="text" class="form-control" id="site" name="site" data-parsley-type="url"  placeholder="Enter school's website"  data-parsley-group="block0">
+                    </div>
+                    <div class="form-group">
+                      <label for="fname">Founder's name</label>
+                      <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter Founder's name" required data-parsley-group="block0">
+                    </div>
+                    <div class="form-group">
+                      <label for="pname">Principal's name</label>
+                      <input type="text" class="form-control" id="pname" name="pname" placeholder="Enter Principal's name" required data-parsley-group="block0">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label for="email">Email ID</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter school's email ID" required data-parsley-group="block0">
+                      </div>
+                      <div class="form-group">
+                        <label for="board">Board affiliation</label>
+                        <input type="text" class="form-control" id="board" name="board" placeholder="ICSE/CBSE etc" required  data-parsley-group="block0">
+                      </div>
+                      <div class="form-group">
+                        <label for="numteachers">Number of teachers</label>
+                        <input type="number" class="form-control" id="numteachers" name="numteachers" placeholder="Enter number of teachers"  data-parsley-group="block0">
+                      </div>
+                      <div class="form-group">
+                        <label for="numstudents">Number of students</label>
+                        <input type="number" class="form-control" id="numstudents" name="numstudents" placeholder="Enter number of students"  data-parsley-group="block0">
+                      </div>
+                      <div class="form-group">
+                        <label for="numboys">Number of boys</label>
+                        <input type="number" class="form-control" id="numboys" name="numboys" placeholder="Enter number of boys"  data-parsley-group="block0">
+                      </div>
+                      <div class="form-group">
+                        <label for="numgirls">Number of girls</label>
+                        <input type="number" class="form-control" id="numgirls" name="numgirls" placeholder="Enter number of girls"  data-parsley-group="block0">
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </fieldset>
+
+              <!-------------------------------------------------------------------------------------------------------->
+
+              <fieldset>
+                <legend>Staff dev</legend>
+                <i> The knowledge, skills and commitment of teachers are the most important factors in achieving high quality educational outcomes. Therefore, it's essential to ensure that those recruited to teaching Posts are of the highest caliber and well suited to the tasks they have to fulfill. </i>
+                <br /> <br />
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for = "q1" >What professional aspects, skills and key areas are taken in view while selecting teachers?</label>
+                      <TEXTAREA id="q1" name="thetext1" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q2" >Kindly elaborate on the selection process that school adopts to select the teachers.</label>
+                      <TEXTAREA id="q2" name="thetext2" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q3" >Do your teachers apply child-centered approach while teaching? If yes, elaborate.</label>
+                      <TEXTAREA id="q3" name="thetext3" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q4" > Do you assess your teachers' performance on regular basis and provide constructive feedback? If yes, what remedial measures are taken for their improvement and for achieving the desired goal?</label>
+                      <TEXTAREA id="q4" name="thetext4" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q5" >Anything else you would like to mention under 'Teachers proficiency' which has not been covered through the above questions</label>
+                      <TEXTAREA id="q5" name="thetext5" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                  </div>
+                </div>
+                <br /><i> Teacher's welfare and training programs –Timely training of teachers to learn and adapt to the changes to create a curriculum fit for the students. Skill up-gradation programs to keep them at par with the ever evolving teaching-learning process.</i> <br /> <br />
+                <br />
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for = "q6" >How are teachers inducted into the school system? Describe all the components of teacher’s orientation plan?</label>
+                      <TEXTAREA id="q6" name="thetext6" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q7" >How frequently do you conduct teacher welfare workshops for theirprofessional growth and development?</label>
+                      <TEXTAREA id="q7" name="thetext7" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q8" >What are some of the initiatives taken to motivate and retain teachers? What all welfare schemes do you offer to your teachers to increase their morale?</label>
+                      <TEXTAREA id="q8" name="thetext8" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q9" >How do you assist teachers in identifying their potential development areas and ways for improvement, so as to raise their professional standard and improve?</label>
+                      <TEXTAREA id="q9" name="thetext9" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q10" >Do you have a teacher’s exchange program? If yes, provide some of the benefits school derived from the exchange program?</label>
+                      <TEXTAREA id="q10" name="thetext10" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-------------------------------------------------------------------------------------------------------->
+              <fieldset>
+                <legend>Activities</legend>
+                <p><i><b>Co-curricular activities</b> - They are an integral part of education. The core aim of education is to foster all round development of a child. In order to achieve this aim, there should be a striking balance between syllabus, curriculum, books and also co-curricular activities.</i><br /><br />
+                </p>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for = "q1" >What professional aspects, skills and key areas are taken in view while selecting teachers?</label>
+                      <TEXTAREA id="q1" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q2" >Kindly elaborate on the selection process that school adopts to select the teachers.</label>
+                      <TEXTAREA id="q2" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q3" >Do your teachers apply child-centered approach while teaching? If yes, elaborate.</label>
+                      <TEXTAREA id="q3" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q4" > Do you assess your teachers' performance on regular basis and provide constructive feedback? If yes, what remedial measures are taken for their improvement and for achieving the desired goal?</label>
+                      <TEXTAREA id="q4" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q5" >Anything else you would like to mention under 'Teachers proficiency' which has not been covered through the above questions</label>
+                      <TEXTAREA id="q5" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                  </div>
+                </div>
+                <br /><i>Academic learning and sports education complement each other and helps developing individuals with leadership quality, sharing, team spirit and tolerance.</i><br /> <br />
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for = "q6">What all Sports activities do you offer to the students? How do you encourage students to enroll themselves for Sports Education (besides weekly time table which contains sports period)?</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q7" >How do you ensure active participation of students in sports events held at various levels- Intra, Inter-school as well as National level?</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q8" > How many students have participated in sports and games outside the school under different categories in last 1-2 years? Highlight the achievements in District level/state level/National level:</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q9" >How many sports teachers do you have in the school?</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q10" >Anything else you would like to mention under ‘Sports education’ which has not been covered through the above questions</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-------------------------------------------------------------------------------------------->
+
+              <fieldset>
+                <legend>Students dev</legend>
+                <p><i><b>Individual attention to students</b> - Number of students in a section, teacher student ratio, if care is taken for every child’s growth instead of focusing on select few. Counseling facilities, both for personal problems and career related issues available for students.</i><br /><br />
+                </p>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for = "q1" >What is the ideal teacher student ratio in your school? Is it constant for all the grades or changes as the grade increases?</label>
+                      <TEXTAREA id="q1" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q2" >How do teachers motivate average students to perform better? What remedial strategies are taken to fill in their learning gaps?</label>
+                      <TEXTAREA id="q2" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q3" >Are there any counseling facilities to deal with students anxieties, personal and career related problems? Kindly furnish the details.</label>
+                      <TEXTAREA id="q3" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q4" >Is there a criteria to ensure that the ratio between girls and boys in each class is equal or close to equal (+-5%)? Kindly ignore if school is gender specific.</label>
+                      <TEXTAREA id="q4" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q5" >What is the basis or methodology followed to divide students in each section?</label>
+                      <TEXTAREA id="q4" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q6" >Anything else you would like to mention under ‘individual attention to students’ that has not been covered through the above questions?</label>
+                      <TEXTAREA id="q4" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                  </div>
+                </div>
+                <br /><i><b>Value system</b> It aims at inculcating values to equip the learner to lead a life satisfying to the individual in accordance with the cherished values and ideals of the society.</i><br /> <br />
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for = "q5" >What steps are being taken to promote values, respect for one another and peace?</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q6" >What steps do you take to sensitize students to respect other religion, culture, and people irrespective of the skin color or the language they speak?</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                      <label for = "q7"> How do you sensitize students to protect their environment or nurture the values of care and concern for the physical and natural environment?</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q8"> How do you help students learn to appreciate, demonstrate sensitivity and skills in fulfilling their responsibility as citizens towards shaping of a better society?</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q9">Anything else you would like to mention under ‘Value System’ that has not been covered through the above questions</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-------------------------------------------------------------------------------------------->
+
+              <fieldset>
+                <legend>Life Skills</legend>
+                <p><i><b>Life Skills Education</b> -The help a student to effectively cope with interpersonal problems, conflicts as well as deal with stress and frustration.</i><br /><br />
+                </p>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for = "q1" >Does your school impart Life-Skills education? If yes, then how well this education is integrated with curriculum?</label>
+                      <TEXTAREA id="q1" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q2" >How do you help students acquire positive attitude, outlook, qualities and skills for their personal and psychological development?</label>
+                      <TEXTAREA id="q2" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q3" >How do you enable students to develop critical and creative thinking skills in solving life and societal problems?</label>
+                      <TEXTAREA id="q3" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q4" > Anything else that you would like to mention under ‘Life-skills education’ that has not been covered through the above questions?</label>
+                      <TEXTAREA id="q4" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                  </div>
+                </div>
+                <br /><i><b>Global Outlook</b> - Steps taken to encourage students to think globally, appreciate differing points of view and understand that the world is a complex, changing place.</i><br /> <br />
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for = "q5">Do you organize cultural exchange programs to help students embrace other cultures and promote liberal-mindedness? If yes, furnish details?</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q6" >Do you encourage students to participate in MUN( Model United Nations) competition to help them learn diplomacy, international relations and the United Nations?</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                    </div>
+                    <div class="form-group">
+
+                      <label for = "q7" >Anything else you would like to mention under ‘Global Outlook’ which has not been covered through the above questions</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-------------------------------------------------------------------------------------------->
+
+              <fieldset>
+                <legend>PHILANTHROPIC SERVICES</legend>
+                <p><i><b>Community Service</b> Initiatives taken to help the weaker/ disadvantage section of the society in the neighborhood.</i><br /><br />
+                </p>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for = "q1" >What initiatives School Management has taken for the betterment of the society and for the disadvantaged group? Kindly provide the evidences.</label>
+                      <TEXTAREA id="q1" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q2" >How the school supports the weaker section of the society- like in kind /cash donation, volunteerism of teachers and students etc?</label>
+                      <TEXTAREA id="q2" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q3" >Anything else you would like to mention under ‘Community Service’ which has not been covered through the above questions?</label>
+                      <TEXTAREA id="q3" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-------------------------------------------------------------------------------------------->
+
+              <fieldset>
+                <legend>Teaching</legend>
+                <p><i><b>Parental Involvement</b>  Effective partnership between school and parents help students achieve better results.</i><br /><br />
+                </p>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for = "q1" >How does your school ensure/encourage active parental involvement in school activities? How do you think it is beneficial for child’s holistic development?</label>
+                      <TEXTAREA id="q1" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q2" >By far, how have you used parents’ expertise in school events, functions and day to day activities?</label>
+                      <TEXTAREA id="q2" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q3" >What are some of the ways in which feedback related to the teachers, facilities in the school, overall safety etc. is sought from parents? How often is this feedback taken?</label>
+                      <TEXTAREA id="q3" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q4" >Kindly mention the initiatives management has taken for parents to reach out to principal/vice principal or teacher in charge for any serious issues?</label>
+                      <TEXTAREA id="q4" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q5" >Cite an example where feedback from a parent was implemented and helped school improve in some way?</label>
+                      <TEXTAREA id="q5" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q6" >Is there an allotted time during the day when parents can meet principal without appointment?</label>
+                      <TEXTAREA id="q6" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>  <div class="form-group">
+                      <label for = "q7" >Anything else you would like to mention under ‘Parental Involvement’ which has not been covered through the above questions?</label>
+                      <TEXTAREA id="q7" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                  </div>
+                </div>
+                <br /><i><b>Individualized Instruction and Approaches to Students </b> - Different students have different needs, therefore, to effectively teach all students, different strategies should be used. The teaching and interactions with students must reflect the needs of each, with the understanding of each as individuals.There are three types of learners in class- Auditory, visual and Kinesthetic. Therefore, lesson planning should be done keeping in mind the needs of each type of learner.</i><br /> <br />
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for = "q8" >How do you facilitate learning for each type of learner?</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q9" >How do you enable auditory, visual and kinesthetic learners grasp key concepts? How do you use variety of instructional techniques to teach in everyday classroom activities?</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q10" >Anything else you would like to mention under ‘Individualized instruction and approaches to students’ which has not been covered through the above questions?</label>
+                      <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-------------------------------------------------------------------------------------------->
+
+              <fieldset>
+                <legend>Infrastructure</legend>
+                <p><i><b>School Infrastructure</b> How well kept the school building is, labs, play grounds, IT enabled class rooms, computers, books in library?</i><br /><br />
+                </p>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for = "q1" >How do you enable students to acquire positive attitude and desirable habits for keeping themselves fit and healthy?</label>
+                      <TEXTAREA id="q1" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q2" >Does your school promote e-learning environment? If yes, how well it is integrated in day-to-day activities?</label>
+                      <TEXTAREA id="q2" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q3" >Kindly mention about the safety norms that are in place or precautions to be followed during science lab sessions?</label>
+                      <TEXTAREA id="q3" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q4" >Is there a practice in place that promotes the usage of library among children of all age group? If yes, kindly mention the details.</label>
+                      <TEXTAREA id="q4" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q5" >Anything else you would like to mention under ‘School Infrastructure’ which has not been covered through the above questions?</label>
+                      <TEXTAREA id="q5" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                    <div class="form-group">
+                      <label for = "q6" >Is there an allotted time during the day when parents can meet principal without appointment?</label>
+                      <TEXTAREA id="q6" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>  <div class="form-group">
+                      <label for = "q7" >Anything else you would like to mention under ‘Parental Involvement’ which has not been covered through the above questions?</label>
+                      <TEXTAREA id="q7" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                    </div>
+                  </div>
+                </div>
+                <br /><i><b>Health and Hygiene</b> - Conducting talks and seminars to make the students and staff aware of various health issues that can arise from unhygienic conditions.
+                  .</i><br /> <br />
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label for = "q8" >How do you facilitate learning for each type of learner?</label>
+                        <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                      </div>
+                      <div class="form-group">
+                        <label for = "q9" >What measures do you take to ensure physical and psychological safety of students?</label>
+                        <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                      </div>
+                      <div class="form-group">
+                        <label for = "q10" >What preventive measures are in place to prevent students from sanitation related problems?</label>
+                        <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                      </div>
+                      <div class="form-group">
+                        <label for = "q11" >How do you make students aware of basic hygiene factors?</label>
+                        <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                      </div>
+                      <div class="form-group">
+                        <label for = "q12" >Anything else you would like to mention under ‘Health and Hygiene’ which has not been covered through the above questions.</label>
+                        <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <!-------------------------------------------------------------------------------------------->
+
+                <fieldset>
+                  <legend>Academics</legend>
+                  <p><i><b>Academic Rigor</b> - How well the school is doing academically and its overall annual performance?</i><br /><br />
+                  </p>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label for = "q1" >Kindly share the highlights of the academic and co-scholastic annual report of the last academic session of your school?</label>
+                        <TEXTAREA id="q1" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                      </div>
+                      <div class="form-group">
+                        <label for = "q2" >Anything else you would like to mention under ‘Academic Rigor’ which has not been covered through the above questions?</label>
+                        <TEXTAREA id="q2" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                      </div>
+                    </div>
+                  </div>
+                  <p><i><b>Value for Money</b> -  Is the school worth investing one’s future. Does the school provide conducive environment where holistic development takes place?</i><br /><br />
+                  </p>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label for = "q3" >Why do you think your school is worth investing? What achievements the school has made so far?</label>
+                        <TEXTAREA id="q3" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                      </div>
+                      <div class="form-group">
+                        <label for = "q4" >Anything else you would like to mention under ‘Value for money’ which has not been covered through the above questions?</label>
+                        <TEXTAREA id="q4" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                      </div>
+                    </div>
+                  </div>
+                  <p><i><b>Leadership/management quality</b> - Capability and vision of school Principal/director/CEO in improving teaching learning process, seeing to it that the staff works as a team, integrity and other leadership skills.</i><br /><br />
+                  </p>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label for = "q5" >Please mention the initiatives management has taken to communicate the vision of school to each of its staff member, students, parents etc.</label>
+                        <TEXTAREA id="q5" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                      </div>
+                      <div class="form-group">
+                        <label for = "q6"> Does management have a plan for next 3-5 years to further promote development or expansion to new geographies?</label>
+                        <TEXTAREA id="q6" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                      </div>
+                      <div class="form-group">
+                        <label for = "q7">Anything else you would like to mention under ‘Leadership/management quality’ which has not been covered through the above questions?</label>
+                        <TEXTAREA id="q7" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <!-------------------------------------------------------------------------------------------->
+
+                <fieldset>
+                  <legend>Social</legend>
+                  <p><i><b>School Inclusion</b> Ensuring that students from economically weaker section feel as confident and secure and enjoy same facilities as students of general category.</i><br /><br />
+                  </p>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label for = "q1" >What measures are taken by school authority to ensure that EWS students are being treated equally and no discrimination is done on the basis of their economic status? Kindly specify.</label>
+                        <TEXTAREA id="q1" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                      </div>
+                      <div class="form-group">
+                        <label for = "q2" >Do they get/enjoy same facilities as general category students? What steps are being taken to sensitize teachers as well as students towards this issue?</label>
+                        <TEXTAREA id="q2" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                      </div>
+                      <div class="form-group">
+                        <label for = "q3" >How do you ensure that no discrimination based on social, economic, linguistic and religious identities as well as disability and illness/disease persist in your school?</label>
+                        <TEXTAREA id="q3" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                      </div>
+                      <div class="form-group">
+                        <label for = "q4" >Anything else you would like to mention under ‘Healthy environment for all’ which has not been covered through the above questions?</label>
+                        <TEXTAREA id="q4" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                      </div>
+                    </div>
+                  </div>
+                  <br /><i><b>Inclusive Education</b> - The facilities in the school to help in the learning process of children with special needs, number of such children actually enrolled, how well are they integrated with other students.</i><br /> <br />
+                  <br />
+                  Does your school promote inclusive culture?
+
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" value="option1" checked>
+                          Yes
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" value="option2">
+                          No
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label for = "q5" >How many students are enrolled currently who have special needs?</label>
+                        <TEXTAREA id="q5" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                      </div>
+                      <div class="form-group">
+                        <label for = "q6" >Do you follow an inclusive approach of teaching to facilitate learning in students with special needs?</label>
+                        <TEXTAREA id="q6" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                      </div>  <div class="form-group">
+                        <label for = "q7" >Do you have well-trained special educators to look after them? Kindly provide the evidences.</label>
+                        <TEXTAREA id="q7" name="thetext" rows="3" class="form-control"  data-parsley-group="block0"> </TEXTAREA>
+                      </div>
+                      <div class="form-group">
+                        <label for = "q8" >Is your school well- equipped to provide children with special needs, a nurturing and safe environment?</label>
+                        <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                      </div>
+                      <div class="form-group">
+                        <label for = "q9" >Is your school’s infrastructure supportive of their needs? Kindly submit detailed information on infrastructure facilities available to support the children with special needs?</label>
+                        <TEXTAREA name="thetext" rows="3" class="form-control"> </TEXTAREA>
+                      </div>
+                      <div>
+                      </div>
+                    </fieldset>
+
+                    <!-------------------------------------------------------------------------------------------->
+
+                    <noscript>
+                      <input class="nocsript-finish-btn sf-right nocsript-sf-btn" type="submit" value="finish"/>
+                    </noscript>
+                  </div>
+                </fieldset>
+              </form>
             </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-12 up-20">
+              <pre>
+                <h2>Rules and Regulations:</h2>
+                <ul>
+                  <li> Uploading fake documents or information can result in permanent ban of your school from our site </li>
+                  <li> The maximum size for documents uploaded is x*y pixels(will update later).</li>
+                  <li> Your responses will be saved automatically in few intervals. So do not worry if you cannot fill the form at one time. You can always come back later!</li>
+                  <li> For any support you can contact us at neha@sandprints.in or shaifali@sandprints.in</li>
+                </ul>
+              </pre>
+            </div>
+          </div>
 
 
+          <footer class="footer">
+            <div class="container">
+              <p class="pull-left">© SandPrints.in</p>
+            </div>
+          </footer>
         </div>
-        </div>
-    </form>
-
+      </div>
     </div>
-
-    
-    
-
-    <script type="text/javascript" src="form.js"></script>
-</body>
-</html>
+  </body>
+  </html>

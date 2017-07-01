@@ -1,0 +1,60 @@
+extends ./baseform
+block title
+	title step-3
+block content
+	fieldset
+		legend Activities
+		p
+			i
+				b Co-curricular activities
+				|  - They are an integral part of education. The core aim of education is to foster all round development of a child. In order to achieve this aim, there should be a striking balance between syllabus, curriculum, books and also co-curricular activities.
+			br
+			br
+		.row
+			.col-lg-12
+				.form-group
+					label(for='q1')
+						| What professional aspects, skills and key areas are taken in view while selecting teachers?
+					textarea#q1.form-control(name='thetext1', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q2')
+						| Kindly elaborate on the selection process that school adopts to select the teachers.
+					textarea#q2.form-control(name='thetext2', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q3')
+						| Do your teachers apply child-centered approach while teaching? If yes, elaborate.
+					textarea#q3.form-control(name='thetext3', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q4')
+						| Do you assess your teachers' performance on regular basis and provide constructive feedback? If yes, what remedial measures are taken for their improvement and for achieving the desired goal?
+					textarea#q4.form-control(name='thetext4', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q5')
+						| Anything else you would like to mention under 'Teachers proficiency' which has not been covered through the above questions
+					textarea#q5.form-control(name='thetext5', rows='3', data-parsley-group='block0')  
+		br
+		i
+			| Academic learning and sports education complement each other and helps developing individuals with leadership quality, sharing, team spirit and tolerance.
+		br
+		br
+		.row
+			.col-lg-12
+				.form-group
+					label(for='q6')
+						| What all Sports activities do you offer to the students? How do you encourage students to enroll themselves for Sports Education (besides weekly time table which contains sports period)?
+					textarea.form-control(name='thetext6', rows='3')  
+				.form-group
+					label(for='q7')
+						| How do you ensure active participation of students in sports events held at various levels- Intra, Inter-school as well as National level?
+					textarea.form-control(name='thetext7', rows='3')  
+				.form-group
+					label(for='q8')
+						| How many students have participated in sports and games outside the school under different categories in last 1-2 years? Highlight the achievements in District level/state level/National level:
+					textarea.form-control(name='thetext8', rows='3')  
+				.form-group
+					label(for='q9') How many sports teachers do you have in the school?
+					textarea.form-control(name='thetext9', rows='3')  
+				.form-group
+					label(for='q10')
+						| Anything else you would like to mention under ‘Sports education’ which has not been covered through the above questions
+					textarea.form-control(name='thetext10', rows='3')  

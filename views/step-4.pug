@@ -1,0 +1,63 @@
+extends ./baseform
+block title
+	title step-4
+block content
+	fieldset
+		legend Students dev
+		p
+			i
+				b Individual attention to students
+				|  - Number of students in a section, teacher student ratio, if care is taken for every child’s growth instead of focusing on select few. Counseling facilities, both for personal problems and career related issues available for students.
+			br
+			br
+		.row
+			.col-lg-12
+				.form-group
+					label(for='q1')
+						| What is the ideal teacher student ratio in your school? Is it constant for all the grades or changes as the grade increases?
+					textarea#q1.form-control(name='thetext1', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q2')
+						| How do teachers motivate average students to perform better? What remedial strategies are taken to fill in their learning gaps?
+					textarea#q2.form-control(name='thetext2', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q3')
+						| Are there any counseling facilities to deal with students anxieties, personal and career related problems? Kindly furnish the details.
+					textarea#q3.form-control(name='thetext3', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q4')
+						| Is there a criteria to ensure that the ratio between girls and boys in each class is equal or close to equal (+-5%)? Kindly ignore if school is gender specific.
+					textarea#q4.form-control(name='thetext4', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q5') What is the basis or methodology followed to divide students in each section?
+					textarea#q4.form-control(name='thetext5', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q6')
+						| Anything else you would like to mention under ‘individual attention to students’ that has not been covered through the above questions?
+					textarea#q4.form-control(name='thetext6', rows='3', data-parsley-group='block0')  
+		br
+		i
+			b Value system
+			|  It aims at inculcating values to equip the learner to lead a life satisfying to the individual in accordance with the cherished values and ideals of the society.
+		br
+		br
+		.row
+			.col-lg-12
+				.form-group
+					label(for='q5') What steps are being taken to promote values, respect for one another and peace?
+					textarea.form-control(name='thetext7', rows='3')  
+				.form-group
+					label(for='q6')
+						| What steps do you take to sensitize students to respect other religion, culture, and people irrespective of the skin color or the language they speak?
+					textarea.form-control(name='thetext8', rows='3')  
+					label(for='q7')
+						| How do you sensitize students to protect their environment or nurture the values of care and concern for the physical and natural environment?
+					textarea.form-control(name='thetext9', rows='3')  
+				.form-group
+					label(for='q8')
+						| How do you help students learn to appreciate, demonstrate sensitivity and skills in fulfilling their responsibility as citizens towards shaping of a better society?
+					textarea.form-control(name='thetext10', rows='3')  
+				.form-group
+					label(for='q9')
+						| Anything else you would like to mention under ‘Value System’ that has not been covered through the above questions
+					textarea.form-control(name='thetext11', rows='3')  

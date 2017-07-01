@@ -1,0 +1,71 @@
+extends ./baseform
+block title
+	title step-10
+block content
+extends ./baseform
+extends ./baseform
+	fieldset
+		legend Social
+		p
+			i
+				b School Inclusion
+				|  Ensuring that students from economically weaker section feel as confident and secure and enjoy same facilities as students of general category.
+			br
+			br
+		.row
+			.col-lg-12
+				.form-group
+					label(for='q1')
+						| What measures are taken by school authority to ensure that EWS students are being treated equally and no discrimination is done on the basis of their economic status? Kindly specify.
+					textarea#q1.form-control(name='thetext1', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q2')
+						| Do they get/enjoy same facilities as general category students? What steps are being taken to sensitize teachers as well as students towards this issue?
+					textarea#q2.form-control(name='thetext2', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q3')
+						| How do you ensure that no discrimination based on social, economic, linguistic and religious identities as well as disability and illness/disease persist in your school?
+					textarea#q3.form-control(name='thetext3', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q4')
+						| Anything else you would like to mention under ‘Healthy environment for all’ which has not been covered through the above questions?
+					textarea#q4.form-control(name='thetext4', rows='3', data-parsley-group='block0')  
+		br
+		i
+			b Inclusive Education
+			|  - The facilities in the school to help in the learning process of children with special needs, number of such children actually enrolled, how well are they integrated with other students.
+		br
+		br
+		br
+		|                   Does your school promote inclusive culture?
+		.row
+			.col-lg-12
+				.radio
+					label
+						input(type='radio', name='optionsRadios', value='option1', checked='' name="thetext5")
+						|                           Yes
+				.radio
+					label
+						input(type='radio', name='optionsRadios', value='option2'  name="thetext5")
+						|                           No
+				.form-group
+					label(for='q5') How many students are enrolled currently who have special needs?
+					textarea#q5.form-control(name='thetext6', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q6')
+						| Do you follow an inclusive approach of teaching to facilitate learning in students with special needs?
+					textarea#q6.form-control(name='thetext7', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q7')
+						| Do you have well-trained special educators to look after them? Kindly provide the evidences.
+					textarea#q7.form-control(name='thetext8', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q8')
+						| Is your school well- equipped to provide children with special needs, a nurturing and safe environment?
+					textarea.form-control(name='thetext9', rows='3')  
+				.form-group
+					label(for='q9')
+						| Is your school’s infrastructure supportive of their needs? Kindly submit detailed information on infrastructure facilities available to support the children with special needs?
+					textarea.form-control(name='thetext10', rows='3')  
+				|                       0
+				div

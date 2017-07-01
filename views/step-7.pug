@@ -1,0 +1,61 @@
+extends ./baseform
+block title
+	title step-7
+block content
+	fieldset
+		legend Teaching
+		p
+			i
+				b Parental Involvement
+				|   Effective partnership between school and parents help students achieve better results.
+			br
+			br
+		.row
+			.col-lg-12
+				.form-group
+					label(for='q1')
+						| How does your school ensure/encourage active parental involvement in school activities? How do you think it is beneficial for child’s holistic development?
+					textarea#q1.form-control(name='thetext1', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q2')
+						| By far, how have you used parents’ expertise in school events, functions and day to day activities?
+					textarea#q2.form-control(name='thetext2', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q3')
+						| What are some of the ways in which feedback related to the teachers, facilities in the school, overall safety etc. is sought from parents? How often is this feedback taken?
+					textarea#q3.form-control(name='thetext3', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q4')
+						| Kindly mention the initiatives management has taken for parents to reach out to principal/vice principal or teacher in charge for any serious issues?
+					textarea#q4.form-control(name='thetext4', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q5')
+						| Cite an example where feedback from a parent was implemented and helped school improve in some way?
+					textarea#q5.form-control(name='thetext5', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q6')
+						| Is there an allotted time during the day when parents can meet principal without appointment?
+					textarea#q6.form-control(name='thetext6', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q7')
+						| Anything else you would like to mention under ‘Parental Involvement’ which has not been covered through the above questions?
+					textarea#q7.form-control(name='thetext7', rows='3', data-parsley-group='block0')  
+		br
+		i
+			b Individualized Instruction and Approaches to Students 
+			|  - Different students have different needs, therefore, to effectively teach all students, different strategies should be used. The teaching and interactions with students must reflect the needs of each, with the understanding of each as individuals.There are three types of learners in class- Auditory, visual and Kinesthetic. Therefore, lesson planning should be done keeping in mind the needs of each type of learner.
+		br
+		br
+		.row
+			.col-lg-12
+				.form-group
+					label(for='q8') How do you facilitate learning for each type of learner?
+					textarea.form-control(name='thetext8', rows='3')  
+				.form-group
+					label(for='q9')
+						| How do you enable auditory, visual and kinesthetic learners grasp key concepts? How do you use variety of instructional techniques to teach in everyday classroom activities?
+					textarea.form-control(name='thetext9', rows='3')  
+				.form-group
+					label(for='q10')
+						| Anything else you would like to mention under ‘Individualized instruction and approaches to students’ which has not been covered through the above questions?
+					textarea.form-control(name='thetext10', rows='3')  

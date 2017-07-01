@@ -1,0 +1,69 @@
+extends ./baseform
+block title
+	title step-8
+block content
+	fieldset
+		legend Infrastructure
+		p
+			i
+				b School Infrastructure
+				|  How well kept the school building is, labs, play grounds, IT enabled class rooms, computers, books in library?
+			br
+			br
+		.row
+			.col-lg-12
+				.form-group
+					label(for='q1')
+						| How do you enable students to acquire positive attitude and desirable habits for keeping themselves fit and healthy?
+					textarea#q1.form-control(name='thetext1', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q2')
+						| Does your school promote e-learning environment? If yes, how well it is integrated in day-to-day activities?
+					textarea#q2.form-control(name='thetext2', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q3')
+						| Kindly mention about the safety norms that are in place or precautions to be followed during science lab sessions?
+					textarea#q3.form-control(name='thetext3', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q4')
+						| Is there a practice in place that promotes the usage of library among children of all age group? If yes, kindly mention the details.
+					textarea#q4.form-control(name='thetext4', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q5')
+						| Anything else you would like to mention under ‘School Infrastructure’ which has not been covered through the above questions?
+					textarea#q5.form-control(name='thetext5', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q6')
+						| Is there an allotted time during the day when parents can meet principal without appointment?
+					textarea#q6.form-control(name='thetext6', rows='3', data-parsley-group='block0')  
+				.form-group
+					label(for='q7')
+						| Anything else you would like to mention under ‘Parental Involvement’ which has not been covered through the above questions?
+					textarea#q7.form-control(name='thetext7', rows='3', data-parsley-group='block0')  
+		br
+		i
+			b Health and Hygiene
+			|  - Conducting talks and seminars to make the students and staff aware of various health issues that can arise from unhygienic conditions.
+			|                   .
+		br
+		br
+		.row
+			.col-lg-12
+				.form-group
+					label(for='q8') How do you facilitate learning for each type of learner?
+					textarea.form-control(name='thetext8', rows='3')  
+				.form-group
+					label(for='q9')
+						| What measures do you take to ensure physical and psychological safety of students?
+					textarea.form-control(name='thetext9', rows='3')  
+				.form-group
+					label(for='q10')
+						| What preventive measures are in place to prevent students from sanitation related problems?
+					textarea.form-control(name='thetext10', rows='3')  
+				.form-group
+					label(for='q11') How do you make students aware of basic hygiene factors?
+					textarea.form-control(name='thetext11', rows='3')  
+				.form-group
+					label(for='q12')
+						| Anything else you would like to mention under ‘Health and Hygiene’ which has not been covered through the above questions.
+					textarea.form-control(name='thetext12', rows='3')  
